@@ -1,0 +1,15 @@
+@import "../../../Scss/index.scss";
+
+.menu-sider {
+  position: fixed;
+  left: 0;
+  top: 65px;
+  height: 100vh;
+  overflow: auto;
+
+  &__versi {
+    padding-top: 100%;
+    text-align: center;
+    color: white;
+  }
+}

@@ -1,0 +1,17 @@
+@import "../../../Scss/variables";
+
+.form-add{
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.boton{
+    margin-top: 10px;
+}
+
+@media (max-width: 500px  ){
+    .boton{
+
+        margin-right: 50px;
+    }
+}

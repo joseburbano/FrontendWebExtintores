@@ -1,0 +1,28 @@
+@import "../../../../Scss/index.scss";
+
+.extintor-info {
+  margin-top: 19px;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 0;
+    color: $font-grey-dark;
+    font-weight: bold;
+    font-size: 40px;
+  }
+
+  &__creation-date {
+    text-align: center;
+    color: $font-grey-dark;
+    width: 100%;
+    margin-bottom: 100px;
+  }
+
+  &__description {
+    color: $font-grey-dark;
+    font-size: 16px;
+    margin-bottom: 100px;
+  }
+}
+
+

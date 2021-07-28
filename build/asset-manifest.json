@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.68df69c8.chunk.css",
+    "main.js": "/static/js/main.1ca04f04.chunk.js",
+    "main.js.map": "/static/js/main.1ca04f04.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a67c6936.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a67c6936.js.map",
+    "static/css/2.99a5358a.chunk.css": "/static/css/2.99a5358a.chunk.css",
+    "static/js/2.71f3a476.chunk.js": "/static/js/2.71f3a476.chunk.js",
+    "static/js/2.71f3a476.chunk.js.map": "/static/js/2.71f3a476.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.46ab77daed76671d79aead8983250c2c.js": "/precache-manifest.46ab77daed76671d79aead8983250c2c.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.99a5358a.chunk.css.map": "/static/css/2.99a5358a.chunk.css.map",
+    "static/css/main.68df69c8.chunk.css.map": "/static/css/main.68df69c8.chunk.css.map",
+    "static/js/2.71f3a476.chunk.js.LICENSE.txt": "/static/js/2.71f3a476.chunk.js.LICENSE.txt",
+    "static/media/corhuila.svg": "/static/media/corhuila.153dd314.svg",
+    "static/media/SingIn.scss": "/static/media/fondo-login.68ead796.jpg",
+    "static/media/logoCorhuilablack.svg": "/static/media/logoCorhuilablack.a05493de.svg",
+    "static/media/no-extintor.png": "/static/media/no-extintor.73fb6b0f.png",
+    "static/media/noNormativa.jpg": "/static/media/noNormativa.8d768314.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a67c6936.js",
+    "static/css/2.99a5358a.chunk.css",
+    "static/js/2.71f3a476.chunk.js",
+    "static/css/main.68df69c8.chunk.css",
+    "static/js/main.1ca04f04.chunk.js"
+  ]
+}

@@ -1,0 +1,75 @@
+@import '../../../../Scss/index.scss';
+
+.list-users {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2%;
+
+    &-switch {
+      display: flex;
+      align-items: center;
+
+      > button {
+        margin-right: 20%;
+        align-items: flex-end;
+        
+      }
+    }
+  }
+
+  .users-active {
+    background-color: #fff;
+    padding: 1% 2%;
+
+
+    .ant-list-item-meta {
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 500px  ){
+    &__header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2%;
+  
+      &-switch {
+        display: flex;
+        align-items: center;
+  
+        > button {
+          margin-right: 20%;
+          align-items: flex-end;
+          
+        }
+      }
+    }
+  
+    .users-active {
+      background-color: #fff;
+      padding: 1% 2%;
+  
+  
+      .ant-list-item-meta {
+        align-items: center;
+      }
+    }
+    
+    .users-active {
+     align-items: center;
+    }
+
+    .botones-item{
+      background-color: white;
+
+      .botones{
+        background-color: white;
+        margin-inline-end: 100%;
+        margin-left: 75%;
+        
+      }
+    }
+  }
+}

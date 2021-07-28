@@ -1,0 +1,14 @@
+@import "../../../../Scss/index.scss";
+
+.imagen{
+    margin-left: 40%;
+    
+}
+
+
+@media (max-width: 500px  ){
+    .imagen{
+        margin-left: auto;
+        
+    }
+  }

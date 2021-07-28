@@ -1,0 +1,39 @@
+@import "../../../../Scss/index.scss";
+
+.extintor {
+  text-align: center;
+  align-content: center;
+  align-items: center;
+
+  .form-add {
+    width: 100%;
+
+    .datos {
+      align-items: center;
+    }
+
+    .tamanio {
+      margin-right: 60px;
+    }
+
+    .dato1 {
+      align-items: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .boton {
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .titulo {
+      margin-top: 10px;
+      padding-left: 2%;
+    }
+
+    .fechas{
+      margin-top: 10px;
+    }
+  }
+}
