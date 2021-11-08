@@ -2,7 +2,7 @@ import { basePath, version } from "./config";
 //consultar a la api
 
 export function getParticipacionApi(limit, page) {
-  const url = `${basePath}/${version}/get-participacion?limit=${limit}&page=${page}`;
+  const url = `${basePath}/${version}/participation/get-participation?pageSize=${limit}&pageNum=${page}`;
 
   return fetch(url)
     .then((response) => {
@@ -17,7 +17,7 @@ export function getParticipacionApi(limit, page) {
 }
 
 export function deleteParticipacionApi(token, id) {
-  const url = `${basePath}/${version}/delete-participacion/${id}`;
+  const url = `${basePath}/${version}/participation/delete-participation/${id}`;
 
   const params = {
     method: "DELETE",
@@ -41,7 +41,7 @@ export function deleteParticipacionApi(token, id) {
 
 //peticion para agregar extintor al backend
 export function addParticipacionApi(token, normativaData, id) {
-  const url = `${basePath}/${version}/add-participacion/${id}`;
+  const url = `${basePath}/${version}/participation/add-participation/${id}`;
 
   const params = {
     method: "POST",
@@ -66,7 +66,7 @@ export function addParticipacionApi(token, normativaData, id) {
 
 //peticion para actuslizar
 export function updateParticipacionApi(token, id, data) {
-  const url = `${basePath}/${version}/update-participacion/${id}`;
+  const url = `${basePath}/${version}/participation/update-participation/${id}`;
 
   const params = {
     method: "PUT",
@@ -89,7 +89,7 @@ export function updateParticipacionApi(token, id, data) {
 }
 //peticion para ver el contendio de un url
 export function getPartiApi(urlNormativa) {
-  const url = `${basePath}/${version}/get-participacion/${urlNormativa}`;
+  const url = `${basePath}/${version}/participation/get-participation/${urlNormativa}`;
 
   return fetch(url)
     .then((response) => {
@@ -105,7 +105,7 @@ export function getPartiApi(urlNormativa) {
 
 //consultar todos los registros para el informe en excel
 export function getNormativaParticipativaApi(token) {
-  const url = `${basePath}/${version}/informe-participacion`;
+  const url = `${basePath}/${version}/participation/report-participation`;
 
   const params = {
     method: "GET",
@@ -129,7 +129,7 @@ export function getNormativaParticipativaApi(token) {
 
 //traer foto
 export function getAvatarParticiApi(avatarName) {
-  const url = `${basePath}/${version}/get-foto-participar/${avatarName}`;
+  const url = `${basePath}/${version}/participation/get-photo-participation-avatar/${avatarName}`;
 
   return fetch(url)
     .then((response) => {
@@ -141,7 +141,7 @@ export function getAvatarParticiApi(avatarName) {
 }
 //traer foto
 export function getAvatarPartiApi(avatarName) {
-  const url = `${basePath}/${version}/get-foto-partici/${avatarName}`;
+  const url = `${basePath}/${version}/participation/get-photo-share/${avatarName}`;
 
   return fetch(url)
     .then((response) => {
@@ -154,7 +154,7 @@ export function getAvatarPartiApi(avatarName) {
 
 //traer foto user
 export function getAvatarParticiUSerApi(avatarName) {
-  const url = `${basePath}/${version}/get-foto-participar-avatar/${avatarName}`;
+  const url = `${basePath}/${version}/participation/get-photo-participation-avatar/${avatarName}`;
 
   return fetch(url)
     .then((response) => {
@@ -167,8 +167,8 @@ export function getAvatarParticiUSerApi(avatarName) {
 
 //para subir imagnes del frontend al servidor
 export function uploadImagenApi(token, avatar, userId) {
-  const url = `${basePath}/${version}/upload-foto-participacion/${userId}`;
- 
+  const url = `${basePath}/${version}/participation/upload-photo-participation/${userId}`;
+
   const formData = new FormData();
   formData.append("avatar", avatar, avatar.name);
   const params = {

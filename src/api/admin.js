@@ -1,8 +1,7 @@
 import { basePath, version } from "./config";
 //consultar la cantidad de usuarios
-export function getCantidadUsersApi( fecha) {
-
-  const url = `${basePath}/${version}/datos-inicio/${fecha}`;
+export function getCantidadUsersApi(fecha) {
+  const url = `${basePath}/${version}/control/start-data/${fecha}`;
 
   return fetch(url)
     .then((response) => {

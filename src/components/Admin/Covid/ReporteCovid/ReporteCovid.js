@@ -3,7 +3,7 @@ import { Button, notification } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
 import ExportExcel from "react-export-excel";
 import { getAccessTokenApi } from "../../../../api/auth";
-import { getCovidInformeApi} from "../../../../api/covid";
+import { getCovidInformeApi } from "../../../../api/covid";
 
 export default function ReporteCovid() {
   const [reporte, setReporte] = useState(null);
@@ -36,7 +36,7 @@ export default function ReporteCovid() {
 
 function Excel(props) {
   const { reporte } = props;
-  console.log(reporte);
+
   //generar reporte en excel desde la base de datos
   //archivo de excel que se va a crear
   const ExcelFile = ExportExcel.ExcelFile;
@@ -62,10 +62,19 @@ function Excel(props) {
           <ExcelColumn label="Dias en cuarentena" value="diasCovid" />
           <ExcelColumn label="Sospecha de estar contagiado" value="sospecha" />
           <ExcelColumn label="Fiebre" value="fiebreDias" />
-          <ExcelColumn label="problemas respiratorio" value="respiratoriosDias" />
+          <ExcelColumn
+            label="problemas respiratorio"
+            value="respiratoriosDias"
+          />
           <ExcelColumn label="Sintomas" value="sintomas" />
-          <ExcelColumn label="contacto con familiar de sospecha" value="sospechosoContagiado" />
-          <ExcelColumn label="familiares contagiados" value="sospechosoFamiliar" />
+          <ExcelColumn
+            label="contacto con familiar de sospecha"
+            value="sospechosoContagiado"
+          />
+          <ExcelColumn
+            label="familiares contagiados"
+            value="sospechosoFamiliar"
+          />
           <ExcelColumn label="temperatura" value="temperatura" />
           <ExcelColumn label="Fecha" value="fecha" />
         </ExcelSheet>
@@ -73,4 +82,3 @@ function Excel(props) {
     </div>
   );
 }
-

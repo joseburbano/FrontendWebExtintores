@@ -17,6 +17,7 @@ import NoAvatar from "../../../../assets/img/PNG/9.1 no-avatar.png";
 import Modal from "../../../Modal";
 import EditUserForm from "../EditUserForm";
 import AddUserForm from "../AddUserForm";
+import Pagination from "../../../Pagination";
 import {
   getAvatarApi,
   activateUserApi,
@@ -29,7 +30,16 @@ import "./ListUsers.scss";
 const { confirm } = ModalAntd;
 
 export default function ListUsers(props) {
-  const { usersActive, usersInactive, setReloadUsers, roles } = props;
+  const {
+    usersActive,
+    usersInactive,
+    setReloadUsers,
+    roles,
+    dataPaginateActive,
+    dataPaginateInactive,
+    location,
+    history,
+  } = props;
   const [viewUsersActives, setViewUsersActives] = useState(true);
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
@@ -43,7 +53,7 @@ export default function ListUsers(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadUsers={setReloadUsers}
         roles={roles}
-      />
+      />,
     );
   };
 
@@ -65,20 +75,40 @@ export default function ListUsers(props) {
       </div>
 
       {viewUsersActives ? (
-        <UsersActive
-          usersActive={usersActive}
-          setIsVisibleModal={setIsVisibleModal}
-          setModalTitle={setModalTitle}
-          setModalContent={setModalContent}
-          setReloadUsers={setReloadUsers}
-          roles={roles}
-        />
+        <div>
+          <UsersActive
+            usersActive={usersActive}
+            setIsVisibleModal={setIsVisibleModal}
+            setModalTitle={setModalTitle}
+            setModalContent={setModalContent}
+            setReloadUsers={setReloadUsers}
+            dataPaginateActive={dataPaginateActive}
+            roles={roles}
+            location={location}
+            history={history}
+          />
+          <Pagination
+            pagina={dataPaginateActive}
+            location={location}
+            history={history}
+          />
+        </div>
       ) : (
-        <UsersInactive
-          usersInactive={usersInactive}
-          setReloadUsers={setReloadUsers}
-          roles={roles}
-        />
+        <div>
+          <UsersInactive
+            usersInactive={usersInactive}
+            setReloadUsers={setReloadUsers}
+            roles={roles}
+            dataPaginateInactive={dataPaginateInactive}
+            location={location}
+            history={history}
+          />
+          <Pagination
+            pagina={dataPaginateInactive}
+            location={location}
+            history={history}
+          />
+        </div>
       )}
 
       <Modal
@@ -107,7 +137,7 @@ function UsersActive(props) {
     setModalTitle(
       `Editar ${user.fullname ? user.fullname : "..."} ${
         user.cedula ? user.cedula : "..."
-      }`
+      }`,
     );
     setModalContent(
       <EditUserForm
@@ -115,7 +145,7 @@ function UsersActive(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadUsers={setReloadUsers}
         roles={roles}
-      />
+      />,
     );
   };
 
@@ -229,7 +259,7 @@ function UsersInactive(props) {
     <List
       className="users-active"
       itemLayout="horizontal"
-      dataSource={usersInactive.docs}
+      dataSource={usersInactive}
       renderItem={(user) => (
         <UserInactive user={user} setReloadUsers={setReloadUsers} />
       )}
@@ -273,7 +303,7 @@ function UserInactive(props) {
 
     confirm({
       title: "Eliminando usuario",
-      content: "¿Estas seguro que quieres eliminar a ${user.email}?",
+      content: `¿Estas seguro que quieres eliminar a ${user.email}?`,
       okText: "Eliminar",
       okType: "danger",
       cancelText: "Cancelar",

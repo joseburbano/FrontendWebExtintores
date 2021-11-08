@@ -96,7 +96,11 @@ export default function AddEditExtintorForm(props) {
 
     const token = getAccessTokenApi();
 
-    addExtintorApi(token, extintorData, use.id)
+    var {
+      user: { id },
+    } = use;
+
+    addExtintorApi(token, extintorData, id)
       .then((response) => {
         const typeNotification = response.code === 200 ? "success" : "warning";
         notification[typeNotification]({
@@ -206,7 +210,7 @@ function Imagen(props) {
       const file = acceptedFiles[0];
       setAvatar({ file, preview: URL.createObjectURL(file) });
     },
-    [setAvatar]
+    [setAvatar],
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -411,7 +415,7 @@ function AddEditForm(props) {
                 ...extintorData,
                 fechaRecarga: moment(
                   value,
-                  "DD/MM/YYYY HH:mm:ss"
+                  "DD/MM/YYYY HH:mm:ss",
                 ).toISOString(),
               })
             }
@@ -433,7 +437,7 @@ function AddEditForm(props) {
                 ...extintorData,
                 fechaVencimiento: moment(
                   value,
-                  "DD/MM/YYYY HH:mm:ss"
+                  "DD/MM/YYYY HH:mm:ss",
                 ).toISOString(),
               })
             }

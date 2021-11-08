@@ -56,11 +56,9 @@ export default function EditUserForm(props) {
     }
   }, [user]);
 
-  useEffect(() => {
-    if (avatar) {
-      setUserData({ ...userData, avatar: avatar.file });
-    }
-  }, [avatar]);
+  if (avatar) {
+    setUserData({ ...userData, avatar: avatar.file });
+  }
 
   const updataUser = (e) => {
     e.preventDefault();
@@ -130,7 +128,7 @@ export default function EditUserForm(props) {
 function UploadAvatar(props) {
   const { avatar, setAvatar } = props;
   const [avatarUrl, setAvatarUrl] = useState(null);
-  
+
   useEffect(() => {
     if (avatar) {
       if (avatar.preview) {
@@ -148,7 +146,7 @@ function UploadAvatar(props) {
       const file = acceptedFiles[0];
       setAvatar({ file, preview: URL.createObjectURL(file) });
     },
-    [setAvatar]
+    [setAvatar],
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -268,11 +266,9 @@ function EditForm(props) {
               onChange={(e) => setUserData({ ...userData, rol: e })}
               defaultValue={userData.rol}
             >
-            {roles.map((rol) => (
-              <option value={rol.name}>
-                {rol.name}
-              </option>
-            ))}
+              {roles.map((rol) => (
+                <option value={rol.name}>{rol.name}</option>
+              ))}
             </Select>
           </Form.Item>
         </Col>

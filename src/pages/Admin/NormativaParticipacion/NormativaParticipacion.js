@@ -28,7 +28,7 @@ function NormativaParticipacion(props) {
             message: response.message,
           });
         } else {
-          setNormativa(response.participantes);
+          setNormativa(response);
         }
       })
       .catch(() => {
@@ -47,7 +47,7 @@ function NormativaParticipacion(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadNormativa={setReloadNormativa}
         normativa={null}
-      />
+      />,
     );
   };
 
@@ -59,7 +59,7 @@ function NormativaParticipacion(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadNormativa={setReloadNormativa}
         extintor={null}
-      />
+      />,
     );
   };
 
@@ -71,16 +71,16 @@ function NormativaParticipacion(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadNormativa={setReloadNormativa}
         normativa={gh}
-      />
+      />,
     );
   };
-
 
   if (!normativa) {
     return (
       <Spin tip="Cargando" style={{ width: "100%", padding: "200px 0" }} />
     );
   }
+  const { total, participaciones } = normativa;
 
   return (
     <div className="normativa">
@@ -95,10 +95,10 @@ function NormativaParticipacion(props) {
 
       <NormativaCards
         editNormativa={editNormativa}
-        normativa={normativa}
+        normativa={participaciones}
         setReloadNormativa={setReloadNormativa}
       />
-      <Pagination pagina={normativa} location={location} history={history} />
+      <Pagination pagina={total} location={location} history={history} />
       <Modal
         width="75%"
         title={modalTitle}

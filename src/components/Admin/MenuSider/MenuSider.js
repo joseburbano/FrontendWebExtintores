@@ -17,14 +17,17 @@ function MenuSider(props) {
   const { menuCollapsed, location, use } = props;
   const [menuData, setMenuData] = useState([]);
   const { Sider } = Layout;
+  const {
+    user: { rol },
+  } = use;
 
   useEffect(() => {
-    if (!use.rol) {
+    if (!rol) {
       logout();
       window.location.reload();
     } else {
       const accessToke = getAccessTokenApi();
-      getRolesSegunPermi(accessToke, use.rol).then((response) => {
+      getRolesSegunPermi(accessToke, rol).then((response) => {
         const arrayMenu = [];
         response.menus.menus.forEach((item) => {
           item.active && arrayMenu.push(item);
@@ -32,7 +35,7 @@ function MenuSider(props) {
         setMenuData(arrayMenu);
       });
     }
-  }, [use.rol]);
+  }, [rol]);
 
   function Icon(props) {
     const { Icono } = props;

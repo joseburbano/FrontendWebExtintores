@@ -26,7 +26,6 @@ export default function LoginForm() {
   const login = async (e) => {
     e.preventDefault();
     const result = await signInApi(inputs);
-    console.log(result);
 
     if (result.message) {
       notification["error"]({
@@ -34,8 +33,7 @@ export default function LoginForm() {
       });
     } else {
       const { accessToken, refreshToken, user } = result;
-
-      const access = localStorage.setItem(ACCESS_TOKEN, accessToken);
+      let access = localStorage.setItem(ACCESS_TOKEN, accessToken);
       localStorage.setItem(REFRESH_TOKEN, refreshToken);
       localStorage.setItem(DATOS_USER, user);
 

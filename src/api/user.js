@@ -1,7 +1,7 @@
 import { basePath, version } from "./config";
 
 export function signUpApi(data) {
-  const url = `${basePath}/${version}/sing-up`;
+  const url = `${basePath}/${version}/auth/singup`;
   const params = {
     method: "POST",
     headers: {
@@ -26,7 +26,7 @@ export function signUpApi(data) {
 }
 
 export function signInApi(data) {
-  const url = `${basePath}/${version}/sign-in`;
+  const url = `${basePath}/${version}/auth/signin`;
   const params = {
     method: "POST",
     body: JSON.stringify(data),
@@ -46,7 +46,7 @@ export function signInApi(data) {
     });
 }
 //traerdatos usuarios
-export function dataUserApi(id) {
+export function dataUserApi(id, token) {
   const url = `${basePath}/${version}/user/${id}`;
   const params = {
     method: "GET",
@@ -67,7 +67,7 @@ export function dataUserApi(id) {
 }
 
 export function getUsersApi() {
-  const url = `${basePath}/${version}/get-users`;
+  const url = `${basePath}/${version}/user/users`;
 
   return fetch(url)
     .then((response) => {
@@ -82,7 +82,7 @@ export function getUsersApi() {
 }
 
 export function getUsersActiveApi(token, status, limit, page) {
-  const url = `${basePath}/${version}/get-users-active?active=${status}&limit=${limit}&page=${page}`;
+  const url = `${basePath}/${version}/user/users-active?active=${status}&pageSize=${limit}&pageNum=${page}`;
 
   const params = {
     method: "GET",
@@ -105,11 +105,11 @@ export function getUsersActiveApi(token, status, limit, page) {
 }
 
 export function uploadAvatarApi(token, avatar, userId) {
-  const url = `${basePath}/${version}/upload-avatar/${userId}`;
+  const url = `${basePath}/${version}/user/upload-avatar/${userId}`;
 
   const formData = new FormData();
   formData.append("avatar", avatar, avatar.name);
-  
+
   const params = {
     method: "PUT",
     body: formData,
@@ -117,7 +117,7 @@ export function uploadAvatarApi(token, avatar, userId) {
       Authorization: token,
     },
   };
-  
+
   return fetch(url, params)
     .then((response) => {
       return response.json();
@@ -131,7 +131,7 @@ export function uploadAvatarApi(token, avatar, userId) {
 }
 
 export function getAvatarApi(avatarName) {
-  const url = `${basePath}/${version}/get-avatar/${avatarName}`;
+  const url = `${basePath}/${version}/user/get-avatar/${avatarName}`;
 
   return fetch(url)
     .then((response) => {
@@ -143,7 +143,7 @@ export function getAvatarApi(avatarName) {
 }
 
 export function updateUserApi(token, user, userId) {
-  const url = `${basePath}/${version}/update-user/${userId}`;
+  const url = `${basePath}/${version}/user/update-user/${userId}`;
 
   const params = {
     method: "PUT",
@@ -167,7 +167,7 @@ export function updateUserApi(token, user, userId) {
 }
 
 export function activateUserApi(token, userId, status) {
-  const url = `${basePath}/${version}/activate-user/${userId}`;
+  const url = `${basePath}/${version}/user/activate-user/${userId}`;
 
   const params = {
     method: "PUT",
@@ -193,7 +193,7 @@ export function activateUserApi(token, userId, status) {
 }
 
 export function deleteUserApi(token, userId) {
-  const url = `${basePath}/${version}/delete-user/${userId}`;
+  const url = `${basePath}/${version}/user/delete-user/${userId}`;
 
   const params = {
     method: "DELETE",
@@ -216,7 +216,7 @@ export function deleteUserApi(token, userId) {
 }
 
 export function signUpAdminApi(token, data) {
-  const url = `${basePath}/${version}/sign-up-admin`;
+  const url = `${basePath}/${version}/user/sign-up-admin`;
 
   const params = {
     method: "POST",

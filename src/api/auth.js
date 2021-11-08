@@ -1,5 +1,5 @@
 import { basePath, version } from "./config";
-import { ACCESS_TOKEN, REFRESH_TOKEN, SESSION, DATOS_USER } from "../utils/constants";
+import { ACCESS_TOKEN, REFRESH_TOKEN, DATOS_USER } from "../utils/constants";
 import jwtDecode from "jwt-decode";
 
 export function getAccessTokenApi() {
@@ -57,7 +57,6 @@ export function refreshAccessTokenApi(refreshToken) {
 export function logout() {
   localStorage.removeItem(ACCESS_TOKEN);
   localStorage.removeItem(REFRESH_TOKEN);
-  localStorage.removeItem(SESSION);
   localStorage.removeItem(DATOS_USER);
 }
 

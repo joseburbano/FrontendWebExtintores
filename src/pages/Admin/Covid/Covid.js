@@ -40,7 +40,7 @@ function Covid(props) {
             message: response.message,
           });
         } else {
-          setCovid(response.covis);
+          setCovid(response);
         }
       })
       .catch(() => {
@@ -50,6 +50,7 @@ function Covid(props) {
       });
     setReloadCovid(false);
   }, [page, reloadCovid]);
+
   //boton de busqueda
   //agregar funcion
   const addCovid = () => {
@@ -60,7 +61,7 @@ function Covid(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadCovid={setReloadCovid}
         covid={null}
-      />
+      />,
     );
   };
 
@@ -72,7 +73,7 @@ function Covid(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadCovid={setReloadCovid}
         covid={unoPor}
-      />
+      />,
     );
   };
 
@@ -84,12 +85,14 @@ function Covid(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadCovid={setReloadCovid}
         covid={null}
-      />
+      />,
     );
   };
 
+  const { total, covis } = covid;
+
   //muestra animacion mientras cargan datos
-  if (!covid) {
+  if (!covis || !total) {
     return (
       <Spin tip="Cargando" style={{ width: "100%", padding: "200px 0" }} />
     );
@@ -111,11 +114,11 @@ function Covid(props) {
       </div>
 
       <ListCovid
-        listaCovid={covid.docs}
+        listaCovid={covis}
         setReloadCovid={setReloadCovid}
         editCovid={editCovid}
       />
-      <Pagination pagina={covid} location={location} history={history} />
+      <Pagination pagina={total} location={location} history={history} />
       <Modal
         width="75%"
         title={modalTitle}

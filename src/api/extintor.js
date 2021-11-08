@@ -2,7 +2,7 @@ import { basePath, version } from "./config";
 //consultar a la api
 
 export function getExtintorApi(limit, page) {
-  const url = `${basePath}/${version}/get-extintores?limit=${limit}&page=${page}`;
+  const url = `${basePath}/${version}/elements/get-elements?pageSize=${limit}&pageNum=${page}`;
 
   return fetch(url)
     .then((response) => {
@@ -17,7 +17,7 @@ export function getExtintorApi(limit, page) {
 }
 
 export function deleteExtintorApi(token, id) {
-  const url = `${basePath}/${version}/delete-extintor/${id}`;
+  const url = `${basePath}/${version}/elements/delete-element/${id}`;
 
   const params = {
     method: "DELETE",
@@ -41,7 +41,8 @@ export function deleteExtintorApi(token, id) {
 
 //peticion para agregar extintor al backend
 export function addExtintorApi(token, extintor, id) {
-  const url = `${basePath}/${version}/add-extintor/${id}`;
+  console.log(id);
+  const url = `${basePath}/${version}/elements/add-element/${id}`;
 
   const params = {
     method: "POST",
@@ -66,7 +67,7 @@ export function addExtintorApi(token, extintor, id) {
 
 //peticion para actuslizar
 export function updateExtintorApi(token, id, data) {
-  const url = `${basePath}/${version}/update-extintor/${id}`;
+  const url = `${basePath}/${version}/elements/update-element/${id}`;
 
   const params = {
     method: "PUT",
@@ -89,7 +90,7 @@ export function updateExtintorApi(token, id, data) {
 }
 //peticion para ver el contendio de un url
 export function getExtinApi(urlExtintor) {
-  const url = `${basePath}/${version}/get-Extintor/${urlExtintor}`;
+  const url = `${basePath}/${version}/elements/get-element/${urlExtintor}`;
 
   return fetch(url)
     .then((response) => {
@@ -105,7 +106,7 @@ export function getExtinApi(urlExtintor) {
 
 //Extraer datos por sede
 export function getSedeApi(token, limit, page, sede) {
-  const url = `${basePath}/${version}/sede/${sede}?limit=${limit}&page=${page}`;
+  const url = `${basePath}/${version}/elements/campus/${sede}?pageSize=${limit}&pageNum=${page}`;
   const params = {
     method: "GET",
     headers: {
@@ -127,7 +128,7 @@ export function getSedeApi(token, limit, page, sede) {
 
 //Extraer datos por bloque
 export function getSedeBloqueApi(token, limit, page, sede, bloque) {
-  const url = `${basePath}/${version}/sede-bloque/${sede}/${bloque}?limit=${limit}&page=${page}`;
+  const url = `${basePath}/${version}/elements/campus-block/${sede}/${bloque}?pageSize=${limit}&pageNum=${page}`;
 
   const params = {
     method: "GET",
@@ -151,7 +152,7 @@ export function getSedeBloqueApi(token, limit, page, sede, bloque) {
 
 //Extraer datos por sede, bloque , piso
 export function getSedeBloquePisoApi(token, limit, page, sede, bloque, piso) {
-  const url = `${basePath}/${version}/sede-bloquepiso/${sede}/${bloque}/${piso}?limit=${limit}&page=${page}`;
+  const url = `${basePath}/${version}/elements/campus-block-flat/${sede}/${bloque}/${piso}?pageSize=${limit}&pageNum=${page}`;
 
   const params = {
     method: "GET",
@@ -175,7 +176,7 @@ export function getSedeBloquePisoApi(token, limit, page, sede, bloque, piso) {
 
 //consultar todos los registros de Extintores
 export function getRegistroExtintoresApi(token) {
-  const url = `${basePath}/${version}/informe`;
+  const url = `${basePath}/${version}/elements/report`;
 
   const params = {
     method: "GET",
@@ -199,7 +200,7 @@ export function getRegistroExtintoresApi(token) {
 
 //traer foto user
 export function getAvatarExtintorApi(avatarName) {
-  const url = `${basePath}/${version}/get-foto/${avatarName}`;
+  const url = `${basePath}/${version}/elements/get-photo/${avatarName}`;
 
   return fetch(url)
     .then((response) => {
@@ -212,7 +213,7 @@ export function getAvatarExtintorApi(avatarName) {
 
 //para subir imagnes del frontend al servidor
 export function uploadImagenApi(token, avatar, userId) {
-  const url = `${basePath}/${version}/upload-foto/${userId}`;
+  const url = `${basePath}/${version}/elements/upload-photo/${userId}`;
 
   const formData = new FormData();
   formData.append("avatar", avatar, avatar.name);

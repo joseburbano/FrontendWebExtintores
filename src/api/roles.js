@@ -2,8 +2,7 @@ import { basePath, version } from "./config";
 
 //peticion para agregar Roles al backend
 export function addRolApi(token, rol) {
- 
-  const url = `${basePath}/${version}/add-roles`;
+  const url = `${basePath}/${version}/role/add-rol`;
   const params = {
     method: "POST",
     headers: {
@@ -25,31 +24,8 @@ export function addRolApi(token, rol) {
     });
 }
 
-export function updateRolApi(token, data) {
-  const url = `${basePath}/update-extintor`;
-
-  const params = {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: token,
-    },
-    body: JSON.stringify(data),
-  };
-  return fetch(url, params)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err;
-    });
-}
-
 export function getRolApi(token) {
-  const url = `${basePath}/${version}/get-roles-permi`;
+  const url = `${basePath}/${version}/role/get-roles-permi`;
   const params = {
     method: "GET",
     headers: {
@@ -71,7 +47,7 @@ export function getRolApi(token) {
 }
 
 export function deleteRolApi(token, id) {
-  const url = `${basePath}/${version}/delete-roles/${id}`;
+  const url = `${basePath}/${version}/role/delete-rol/${id}`;
 
   const params = {
     method: "DELETE",
@@ -86,10 +62,9 @@ export function deleteRolApi(token, id) {
       return response.json();
     })
     .then((result) => {
-      return result.message;
+      return result;
     })
     .catch((err) => {
       return err.message;
     });
-
 }

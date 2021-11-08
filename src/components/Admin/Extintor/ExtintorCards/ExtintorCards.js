@@ -15,8 +15,11 @@ const { confirm } = Modal;
 const { Meta } = Card;
 
 export default function ExtintorList(props) {
-  const { extintor, setReloadExtintor, editExtintor } = props;
-  
+  const {
+    extintor: { extintores },
+    setReloadExtintor,
+    editExtintor,
+  } = props;
 
   const deleteExtintor = (extinto) => {
     const accessToken = getAccessTokenApi();
@@ -44,8 +47,6 @@ export default function ExtintorList(props) {
       },
     });
   };
-
-  const extintores = extintor.docs;
 
   return (
     <div className="extintores-cards">

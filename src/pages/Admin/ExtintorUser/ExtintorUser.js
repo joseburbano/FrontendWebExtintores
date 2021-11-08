@@ -15,7 +15,6 @@ import {
 import "./ExtintorUser.scss";
 
 function ExtintorUser(props) {
-
   const { location, history } = props;
   const [extintor, setExtintor] = useState(null);
   const [reloadExtintor, setReloadExtintor] = useState(false);
@@ -101,7 +100,6 @@ function ExtintorUser(props) {
     setReloadExtintor(false);
   }, [page, reloadExtintor, sede]);
 
-
   if (!extintor) {
     return null;
   }
@@ -152,11 +150,8 @@ function ExtintorUser(props) {
         onChange={(e) => setSede({ ...sede, piso: e })}
         value={sede.piso}
       ></Select>
-      <div className="extintor__add-extintor">
-      </div>
-      <ExtintorCards
-        extintor={extintor}
-      />
+      <div className="extintor__add-extintor"></div>
+      <ExtintorCards extintor={extintor} />
       <Pagination pagina={pagina} location={location} history={history} />
     </div>
   );

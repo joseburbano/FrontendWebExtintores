@@ -72,7 +72,7 @@ export default function NormativaCards(props) {
       });
   };
 
-  const normativas = normativa.docs;
+  const normativas = normativa;
   return (
     <List
       itemLayout="vertical"

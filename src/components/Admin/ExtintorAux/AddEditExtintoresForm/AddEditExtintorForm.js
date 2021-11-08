@@ -10,16 +10,16 @@ import {
   Select,
   notification,
   Avatar,
-  message
 } from "antd";
-import {
-  LinkOutlined,
-  SmileOutlined,
-} from "@ant-design/icons";
+import { LinkOutlined, SmileOutlined } from "@ant-design/icons";
 import moment from "moment";
 import { getAccessTokenApi } from "../../../../api/auth";
 import { useDropzone } from "react-dropzone";
-import { addExtintorApi, updateExtintorApi, uploadImagenApi } from "../../../../api/extintor";
+import {
+  addExtintorApi,
+  updateExtintorApi,
+  uploadImagenApi,
+} from "../../../../api/extintor";
 import NoAvatar from "../../../../assets/img/PNG/no-extintor.png";
 import "./AddEditExtintorForm.scss";
 
@@ -76,10 +76,10 @@ export default function AddEditExtintorForm(props) {
       });
     } else {
       if (!extintor) {
-        extintorData.fechaUpdate = new moment().toISOString();;
+        extintorData.fechaUpdate = new moment().toISOString();
         addExtin();
       } else {
-        extintorData.fechaUpdate = new moment().toISOString();;
+        extintorData.fechaUpdate = new moment().toISOString();
         updateExtintor();
       }
     }
@@ -140,7 +140,7 @@ export default function AddEditExtintorForm(props) {
     if (ghf) {
       uploadImagenApi(token, avatar.file, ghf).then((response) => {
         notification["error"]({
-          message: message.response,
+          message: response.message,
         });
       });
     } else {
@@ -150,10 +150,9 @@ export default function AddEditExtintorForm(props) {
     }
   }
 
-
   return (
     <div className="extintor">
-    <Imagen
+      <Imagen
         avatar={avatar}
         setAvatar={setAvatar}
         extintorData={extintorData}
@@ -170,7 +169,6 @@ export default function AddEditExtintorForm(props) {
   );
 }
 
-
 function Imagen(props) {
   const { avatar, setAvatar, setAvatarUrl, avatarUrl } = props;
   useEffect(() => {
@@ -183,14 +181,14 @@ function Imagen(props) {
     } else {
       setAvatarUrl(null);
     }
-  }, [avatar]);
+  });
 
   const onDrop = useCallback(
     (acceptedFiles) => {
       const file = acceptedFiles[0];
       setAvatar({ file, preview: URL.createObjectURL(file) });
     },
-    [setAvatar]
+    [setAvatar],
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -214,12 +212,7 @@ function Imagen(props) {
 function AddEditForm(props) {
   const { Option } = Select;
   const { TextArea } = Input;
-  const {
-    extintorData,
-    setExtintorData,
-    extintor,
-    processExtintor,
-  } = props;
+  const { extintorData, setExtintorData, extintor, processExtintor } = props;
   return (
     <Form className="form-add" onSubmit={processExtintor}>
       <Row gutter={24} className="datos">
@@ -400,7 +393,7 @@ function AddEditForm(props) {
                 ...extintorData,
                 fechaRecarga: moment(
                   value,
-                  "DD/MM/YYYY HH:mm:ss"
+                  "DD/MM/YYYY HH:mm:ss",
                 ).toISOString(),
               })
             }
@@ -422,7 +415,7 @@ function AddEditForm(props) {
                 ...extintorData,
                 fechaVencimiento: moment(
                   value,
-                  "DD/MM/YYYY HH:mm:ss"
+                  "DD/MM/YYYY HH:mm:ss",
                 ).toISOString(),
               })
             }

@@ -6,7 +6,7 @@ import MenuSider from "../components/Admin/MenuSider";
 import AdminSignIn from "../pages/Admin/SingIn";
 import useAuth from "../hooks/useAuth";
 import jwt from "jwt-decode";
-import { SESSION } from "../utils/constants";
+import { ACCESS_TOKEN } from "../utils/constants";
 import "./LayoutAdmin.scss";
 
 export default function LayoutAdmin(props) {
@@ -14,6 +14,8 @@ export default function LayoutAdmin(props) {
   const [menuCollapsed, setMenuCollapsed] = useState(true);
   const { user, isLoading } = useAuth();
   const { Header, Content, Footer } = Layout;
+  let usuario;
+  let use;
 
   if (!user && !isLoading) {
     return (
@@ -25,15 +27,12 @@ export default function LayoutAdmin(props) {
   }
 
   try {
-    const usuario = localStorage.getItem("accessToken");
-    localStorage.setItem(SESSION, usuario);
-    const userr = localStorage.getItem("session");
-    var use = jwt(userr);
-    
+    usuario = localStorage.getItem("accessToken");
+    localStorage.setItem(ACCESS_TOKEN, usuario);
+    use = jwt(usuario);
   } catch (error) {
     console.log("Error al extraer datos de localStored.");
   }
-
   if (user && !isLoading) {
     return (
       <Layout>

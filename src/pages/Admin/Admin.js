@@ -27,7 +27,8 @@ export default function Admin() {
   const [totalCo, setTotalCo] = useState(null);
 
   useEffect(() => {
-    var fecha = moment(fecha).format("YYYY-MM-DD");
+    var fecha;
+    fecha = moment(fecha).format("YYYY-MM-DD");
     getCantidadUsersApi(fecha)
       .then((response) => {
         if (response?.code !== 200) {

@@ -136,14 +136,14 @@ function Imagen(props) {
     } else {
       setAvatarUrl(null);
     }
-  }, [avatar]);
+  });
 
   const onDrop = useCallback(
     (acceptedFiles) => {
       const file = acceptedFiles[0];
       setAvatar({ file, preview: URL.createObjectURL(file) });
     },
-    [setAvatar]
+    [setAvatar],
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -279,7 +279,7 @@ function AddEditForm(props) {
         </Col>
         <Col span={12}>
           <DatePicker
-            style={{ marginTop: "10px" }, { width: "100%" }}
+            style={({ marginTop: "10px" }, { width: "100%" })}
             format="DD/MM/YYYY HH:mm:ss"
             prefix={<LinkOutlined />}
             placeholder="Fecha"

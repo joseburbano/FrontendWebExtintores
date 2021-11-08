@@ -77,11 +77,9 @@ function Covidss(props) {
           <a className="editar" onClick={() => editCovid(unoPor)}>
             editar
           </a>
-
           <Link className="ver" to={`covids/${unoPor.url}`}>
             Ver
           </Link>
-
           <a className="del" onClick={() => deleteCovid(unoPor)}>
             Eliminar
           </a>
@@ -90,7 +88,7 @@ function Covidss(props) {
     >
       <List.Item.Meta
         avatar={<Avatar src={avatarCovid ? avatarCovid : NoAvatar} />}
-        title={<a>{unoPor.temperatura}°C</a>}
+        title={<a href="https://ant.design">{unoPor.temperatura}°C</a>}
         description={`Sospecha: ${
           unoPor ? unoPor.sospecha : "No se encontro registro"
         }, Nombre: ${

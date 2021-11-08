@@ -8,19 +8,17 @@ import { getAvatarExtintorApi } from "../../../../api/extintor";
 const { Meta } = Card;
 
 export default function ExtintorList(props) {
-  const { extintor, editExtintor } = props;
-
-  const extintores = extintor.docs;
+  const {
+    extintor: { extintores },
+    editExtintor,
+  } = props;
 
   return (
     <div className="extintores-cards">
       <Row>
         {extintores.map((extinto) => (
           <Col md={8} key={extinto._id} className="extintores-list__extintor">
-            <Extintor
-              extinto={extinto}
-              editExtintor={editExtintor}
-            />
+            <Extintor extinto={extinto} editExtintor={editExtintor} />
           </Col>
         ))}
       </Row>

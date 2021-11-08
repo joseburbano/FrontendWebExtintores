@@ -35,7 +35,7 @@ export default function Reporte() {
 
 function Excel(props) {
   const { reporte } = props;
-  console.log(reporte);
+
   //generar reporte en excel desde la base de datos
   //archivo de excel que se va a crear
   const ExcelFile = ExportExcel.ExcelFile;

@@ -106,8 +106,6 @@ function ExtintorAuxiliar(props) {
     setReloadExtintor(false);
   }, [page, reloadExtintor, sede]);
 
-
-
   const generateReporte = () => {
     setIsVisibleModal(true);
     setModalTitle("Generar Reporte");
@@ -116,7 +114,7 @@ function ExtintorAuxiliar(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadExtintor={setReloadExtintor}
         extintor={null}
-      />
+      />,
     );
   };
 
@@ -128,7 +126,7 @@ function ExtintorAuxiliar(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadExtintor={setReloadExtintor}
         extintor={extinto}
-      />
+      />,
     );
   };
 

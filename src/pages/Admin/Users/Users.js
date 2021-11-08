@@ -4,9 +4,8 @@ import { getUsersActiveApi } from "../../../api/user";
 import ListUsers from "../../../components/Admin/Users/ListUsers";
 import queryString from "query-string";
 import { withRouter } from "react-router-dom";
-import Pagination from "../../../components/Pagination";
 import { getRolApi } from "../../../api/roles";
-import { notification } from "antd";
+import { notification, Spin } from "antd";
 
 import "./Users.scss";
 function User(props) {
@@ -15,6 +14,8 @@ function User(props) {
   const [usersInactive, setUsersInactive] = useState([]);
   const [reloadUsers, setReloadUsers] = useState(false);
   const [roles, setRoles] = useState(null);
+  const [dataPaginateActive, setDataPaginateActive] = useState(null);
+  const [dataPaginateInactive, setDataPaginateInactive] = useState(null);
 
   useEffect(() => {
     const as = getAccessTokenApi();
@@ -35,29 +36,46 @@ function User(props) {
       });
   }, []);
 
-  const { page = 1 } = queryString.parse(location.search);
+  const { pageNum = 1 } = queryString.parse(location.search);
   //const {Search} = Input;
 
   useEffect(() => {
     const token = getAccessTokenApi();
-    getUsersActiveApi(token, true, 10, page).then((response) => {
+    getUsersActiveApi(token, true, 10, pageNum).then((response) => {
       setUsersActive(response.users);
+      setDataPaginateActive(response.total);
     });
-    getUsersActiveApi(token, false, 10, page).then((response) => {
+
+    getUsersActiveApi(token, false, 10, pageNum).then((response) => {
       setUsersInactive(response.users);
+      setDataPaginateInactive(response.total);
     });
     setReloadUsers(false);
-  }, [reloadUsers, page]);
-  var pagina = usersActive;
+  }, [reloadUsers, pageNum]);
+
+  if (
+    !dataPaginateActive ||
+    !dataPaginateInactive ||
+    !usersActive ||
+    !usersInactive
+  ) {
+    return (
+      <Spin tip="Cargando" style={{ width: "100%", padding: "200px 0" }} />
+    );
+  }
+
   return (
     <div className="users">
       <ListUsers
         roles={roles}
-        usersActive={usersActive.docs}
+        usersActive={usersActive}
         usersInactive={usersInactive}
         setReloadUsers={setReloadUsers}
+        dataPaginateActive={dataPaginateActive}
+        dataPaginateInactive={dataPaginateInactive}
+        location={location}
+        history={history}
       />
-      <Pagination pagina={pagina} location={location} history={history} />
     </div>
   );
 }

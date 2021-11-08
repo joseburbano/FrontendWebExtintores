@@ -1,15 +1,14 @@
 import React from "react";
 
-
 export default function Usu(props) {
-  const {use} = props
-
-  let nombre = [];
-  nombre.push(use.fullname);
-
+  const {
+    use: {
+      user: { fullname },
+    },
+  } = props;
   return (
     <div>
-      <Nombre use={nombre[0]} />
+      <Nombre use={fullname} />
     </div>
   );
 }

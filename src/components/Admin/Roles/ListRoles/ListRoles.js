@@ -68,7 +68,7 @@ function Roless(props) {
         </Button>,
       ]}
     >
-      <List.Item.Meta title={<a>{uno.name}</a>} />
+      <List.Item.Meta title={uno.name} />
     </List.Item>
   );
 }

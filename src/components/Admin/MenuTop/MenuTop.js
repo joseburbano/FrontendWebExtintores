@@ -29,7 +29,7 @@ export default function MenuTop(props) {
           onClick={() => setMenuCollapsed(!menuCollapsed)}
         >
           {React.createElement(
-            menuCollapsed ? MenuUnfoldOutlined : MenuFoldOutlined
+            menuCollapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
           )}
         </Button>
         <img

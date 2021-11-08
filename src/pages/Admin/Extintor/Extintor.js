@@ -41,7 +41,7 @@ function Extintor(props) {
               message: response.message,
             });
           } else {
-            setExtintor(response.pisos);
+            setExtintor(response);
           }
         })
         .catch(() => {
@@ -58,7 +58,7 @@ function Extintor(props) {
                 message: response.message,
               });
             } else {
-              setExtintor(response.bloques);
+              setExtintor(response);
             }
           })
           .catch(() => {
@@ -75,7 +75,7 @@ function Extintor(props) {
                   message: response.message,
                 });
               } else {
-                setExtintor(response.sedes);
+                setExtintor(response);
               }
             })
             .catch(() => {
@@ -91,7 +91,7 @@ function Extintor(props) {
                   message: response.message,
                 });
               } else {
-                setExtintor(response.extintores);
+                setExtintor(response);
               }
             })
             .catch(() => {
@@ -113,7 +113,7 @@ function Extintor(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadExtintor={setReloadExtintor}
         extintor={null}
-      />
+      />,
     );
   };
 
@@ -125,7 +125,7 @@ function Extintor(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadExtintor={setReloadExtintor}
         extintor={null}
-      />
+      />,
     );
   };
 
@@ -137,10 +137,10 @@ function Extintor(props) {
         setIsVisibleModal={setIsVisibleModal}
         setReloadExtintor={setReloadExtintor}
         extintor={extinto}
-      />
+      />,
     );
   };
-console.log(extintor);
+
   if (!extintor) {
     return (
       <Spin tip="Cargando" style={{ width: "100%", padding: "200px 0" }} />
@@ -166,7 +166,7 @@ console.log(extintor);
     { value: "4", label: "4" },
     { value: "5", label: "5" },
   ];
-  var pagina = extintor;
+
   return (
     <div className="extintor">
       <Select
@@ -209,7 +209,11 @@ console.log(extintor);
         extintor={extintor}
         setReloadExtintor={setReloadExtintor}
       />
-      <Pagination pagina={pagina} location={location} history={history} />
+      <Pagination
+        pagina={extintor.total}
+        location={location}
+        history={history}
+      />
       <Modal
         width="75%"
         title={modalTitle}

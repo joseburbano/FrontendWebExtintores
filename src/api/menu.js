@@ -2,7 +2,7 @@ import { basePath, version } from "./config";
 //consultar a la api
 
 export function getRolesSegunPermi(token, rol) {
-  const url = `${basePath}/${version}/get-roles-segun-permi/${rol}`;
+  const url = `${basePath}/${version}/role/get-roles-as-allowed/${rol}`;
 
   const params = {
     method: "GET",
@@ -25,7 +25,7 @@ export function getRolesSegunPermi(token, rol) {
 }
 
 export function getPermisos(token) {
-  const url = `${basePath}/${version}/get-permisos`;
+  const url = `${basePath}/${version}/permit/get-permissions`;
 
   const params = {
     method: "GET",
@@ -48,7 +48,7 @@ export function getPermisos(token) {
 }
 
 export function actualizarPermiso(token, data) {
-  const url = `${basePath}/${version}/update-roles-menus`;
+  const url = `${basePath}/${version}/role/update-rol-menu`;
 
   const params = {
     method: "PUT",
@@ -71,9 +71,8 @@ export function actualizarPermiso(token, data) {
     });
 }
 
-export function traerPermisos(token, name){
-  
-  const url = `${basePath}/${version}/get-permisos-usuarios-asignados/${name}`;
+export function traerPermisos(token, name) {
+  const url = `${basePath}/${version}/role/get-permissions-assigned-users/${name}`;
 
   const params = {
     method: "GET",

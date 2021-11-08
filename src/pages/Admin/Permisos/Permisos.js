@@ -15,7 +15,6 @@ export default function Permisos() {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [reloadRol, setReloadRol] = useState(false);
   const [roles, setRoles] = useState(null);
-  
 
   useEffect(() => {
     const accessToken = getAccessTokenApi();
@@ -45,7 +44,7 @@ export default function Permisos() {
         setIsVisibleModal={setIsVisibleModal}
         setReloadRol={setReloadRol}
         roles={null}
-      />
+      />,
     );
   };
 
@@ -53,7 +52,7 @@ export default function Permisos() {
     setIsVisibleModal(true);
     setModalTitle("Asignar permisos");
     setModalContent(
-      <AddPermisosRoles uno={uno} setIsVisibleModal={setIsVisibleModal} />
+      <AddPermisosRoles uno={uno} setIsVisibleModal={setIsVisibleModal} />,
     );
   };
 

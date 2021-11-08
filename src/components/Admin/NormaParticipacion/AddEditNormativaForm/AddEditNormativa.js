@@ -64,8 +64,8 @@ export default function AddEditNormativa(props) {
       !descripcionNovedad ||
       !motivoRazon ||
       !medidasImplementar ||
-      primerosAuxilios ||
-      relacionTrabajo ||
+      !primerosAuxilios ||
+      !relacionTrabajo ||
       !fecha
     ) {
       notification["error"]({
@@ -92,8 +92,11 @@ export default function AddEditNormativa(props) {
       });
     }
     const token = getAccessTokenApi();
+    const {
+      user: { id },
+    } = use;
 
-    addParticipacionApi(token, normativaData, use.id)
+    addParticipacionApi(token, normativaData, id)
       .then((response) => {
         const typeNotification = response.code === 200 ? "success" : "warning";
         notification[typeNotification]({
@@ -207,7 +210,7 @@ function Imagen(props) {
       const file = acceptedFiles[0];
       setAvatar({ file, preview: URL.createObjectURL(file) });
     },
-    [setAvatar]
+    [setAvatar],
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -230,12 +233,8 @@ function Imagen(props) {
 
 function AddEditForm(props) {
   const { Option } = Select;
-  const {
-    normativaData,
-    setNormativaData,
-    normativa,
-    processNormativa,
-  } = props;
+  const { normativaData, setNormativaData, normativa, processNormativa } =
+    props;
 
   const options = [
     { label: "Si", value: "si" },

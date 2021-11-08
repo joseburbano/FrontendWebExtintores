@@ -1,14 +1,15 @@
 import React from "react";
 
 export default function Rol(props) {
-  const { use } = props;
-
-  let rol = [];
-  rol.push(use.rol);
+  const {
+    use: {
+      user: { rol },
+    },
+  } = props;
 
   return (
     <div>
-      <Role use={rol[0]} />
+      <Role use={rol} />
     </div>
   );
 }

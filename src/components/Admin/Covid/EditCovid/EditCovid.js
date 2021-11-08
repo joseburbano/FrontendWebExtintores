@@ -28,7 +28,7 @@ export default function EditCovid(props) {
       setCheckData({});
     }
   }, [covid]);
-  
+
   //comprovamos que los campos esten llenos
   function check(val) {
     let hu = [];
@@ -174,6 +174,18 @@ function EditCovidAdd(props) {
     { label: "Ninguna de las anteriores", value: "Ninguna de las anteriores" },
   ];
 
+  const {
+    sede,
+    diagnosticoCovid,
+    diasCovid,
+    sospecha,
+    fiebreDias,
+    respiratoriosDias,
+    sospechosoContagiado,
+    temperatura,
+    sospechosoFamiliar,
+  } = covidData;
+
   return (
     <Form className="form-add" onSubmit={processCovid}>
       <h3>
@@ -245,7 +257,7 @@ function EditCovidAdd(props) {
               sede: e,
             })
           }
-          value={covidData.sede}
+          value={sede}
         >
           <Option value="prado alto">Sede Prado Alto</Option>
           <Option value="quirinal">Sede Quirinal</Option>
@@ -269,7 +281,7 @@ function EditCovidAdd(props) {
               diagnosticoCovid: e.target.value,
             })
           }
-          value={covidData.diagnosticoCovid}
+          value={diagnosticoCovid}
         ></Radio.Group>
       </Row>
       <Row gutter={24}>
@@ -281,7 +293,7 @@ function EditCovidAdd(props) {
           style={{ width: "100%" }}
           placeholder="Dias con Covid-19"
           disabled={acepto}
-          value={covidData.diasCovid}
+          value={diasCovid}
           onChange={(e) =>
             setCovidData({
               ...covidData,
@@ -304,7 +316,7 @@ function EditCovidAdd(props) {
               sospecha: e.target.value,
             })
           }
-          value={covidData.sospecha}
+          value={sospecha}
         ></Radio.Group>
       </Row>
       <Row gutter={24}>
@@ -320,7 +332,7 @@ function EditCovidAdd(props) {
               fiebreDias: e.target.value,
             })
           }
-          value={covidData.fiebreDias}
+          value={fiebreDias}
         ></Radio.Group>
       </Row>
       <Row gutter={24}>
@@ -334,7 +346,7 @@ function EditCovidAdd(props) {
               respiratoriosDias: e.target.value,
             })
           }
-          value={covidData.respiratoriosDias}
+          value={respiratoriosDias}
         ></Radio.Group>
       </Row>
       <Row gutter={24}>
@@ -360,7 +372,7 @@ function EditCovidAdd(props) {
               sospechosoContagiado: e.target.value,
             })
           }
-          value={covidData.sospechosoContagiado}
+          value={sospechosoContagiado}
         ></Radio.Group>
       </Row>
       <Row gutter={24}>
@@ -378,7 +390,7 @@ function EditCovidAdd(props) {
               sospechosoFamiliar: e.target.value,
             })
           }
-          value={covidData.sospechosoFamiliar}
+          value={sospechosoFamiliar}
         ></Radio.Group>
       </Row>
       <Row gutter={24}>
@@ -386,7 +398,7 @@ function EditCovidAdd(props) {
         <Input
           style={{ width: "100%" }}
           placeholder="Temperatura"
-          value={covidData.temperatura}
+          value={temperatura}
           disabled={acepto}
           onChange={(e) =>
             setCovidData({

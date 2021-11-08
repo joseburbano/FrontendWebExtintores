@@ -6,7 +6,6 @@ import "moment/locale/es";
 import "./InfoCovid.scss";
 import NoAvatar from "../../../../assets/img/PNG/9.1 no-avatar.png";
 
-
 export default function InfoCovid(props) {
   const { url } = props;
   const [covidInfo, setCovidInfo] = useState(null);
@@ -30,10 +29,10 @@ export default function InfoCovid(props) {
         });
       });
   }, [url]);
-  
+
   useEffect(() => {
     if (avaCovi) {
-      getAvatarCovidApi(avaCovi).then((response) => {
+      getAvatarCovidApi(avaCovi.avatar).then((response) => {
         setAvatarCovi(response);
       });
     } else {
@@ -46,7 +45,7 @@ export default function InfoCovid(props) {
       <Spin tip="Cargando" style={{ width: "100%", padding: "200px 0" }} />
     );
   }
-console.log(covidInfo);
+
   const columns = [
     {
       title: "Descripcion",
@@ -115,9 +114,13 @@ console.log(covidInfo);
         <h1>Informacion del registro</h1>
         {moment(covidInfo.fecha).local("es").format("LL")}
       </div>
-      <Image width={200} src={avatarCovi ? avatarCovi : NoAvatar}  className="imagen"/>
+      <Image
+        width={200}
+        src={avatarCovi ? avatarCovi : NoAvatar}
+        className="imagen"
+      />
 
-      <Table columns={columns} dataSource={data} style={{"marginTop":"10%"}}/>
+      <Table columns={columns} dataSource={data} style={{ marginTop: "10%" }} />
     </div>
   );
 }
